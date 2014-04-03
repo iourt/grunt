@@ -1,0 +1,26 @@
+{
+  "name": "touchzoom",
+  "version": "0.0.1",
+  "description": "scale images",
+  "main": "1.js",
+  "dependencies": {
+    "grunt": "~0.4.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "ok"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:appue/touchzoom.git"
+  },
+  "keywords": [
+    "touchzoom"
+  ],
+  "author": "appue.bear",
+  "license": "appue",
+  "bugs": {
+    "url": "https://github.com/appue/touchzoom/issues"
+  },
+  "homepage": "https://github.com/appue/touchzoom"
+}
