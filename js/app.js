@@ -1,12 +1,9 @@
-
 require([
     'jquery',
-	'underscore',
-	'handlebars',
 	'backbone',
     'router',
     'require'
-],function($, _, Handlebars, Backbone, router, require){
+],function($, Backbone, router, require){
 	
 	//homepage
 	router.on('route:main', function(){
