@@ -14,19 +14,14 @@ module.exports = function(grunt) {
 		},
 		handlebars: {
 			options: {
-				namespace: function(filename) {
-					var names = filename.replace(/js\/(.*)(\/\w+\.hbs)/, '$1');
-					return names.split('/').join('.');
-				},
-				files: {
-					'js/**/*.js' : [ 'js/**/*.hbs']
-				}
+				namespace: false,
+				amd: true
 			},
 			build: {
-				src: 'js/layout/main.hbs',
-				dest: 'js/layout/main.hbs.js'
+				src: "js/layout/main.hbs",
+				dest: "js/layout/main.hbs.js"
 			}
-		}
+	    }
 	});  
 
 	// Load the plugin that provides the "uglify" task.  

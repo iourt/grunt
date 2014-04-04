@@ -9,7 +9,7 @@ define([
         initialize: function() {
         },
         render: function() {
-            this.setElement( this.template );
+            this.setElement( this.template() );
             return this;
         }
 	});
