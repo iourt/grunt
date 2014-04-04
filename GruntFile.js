@@ -19,8 +19,12 @@ module.exports = function(grunt) {
 					return names.split('/').join('.');
 				},
 				files: {
-					'ns_nested_tmpls.js' : [ 'js/**/*.hbs']
+					'js/**/*.js' : [ 'js/**/*.hbs']
 				}
+			},
+			build: {
+				src: 'js/layout/main.hbs',
+				dest: 'js/layout/main.hbs.js'
 			}
 		}
 	});  
@@ -30,5 +34,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-handlebars');
 
 	// Default task(s).  
+	// grunt.registerTask('build', ['uglify', 'handlebars']);
 	grunt.registerTask('default', ['uglify', 'handlebars']);
 };

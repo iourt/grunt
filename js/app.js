@@ -1,22 +1,12 @@
-//配置URL
-requirejs.config({
-    baseUrl: '/js/',
-    paths: {
-        'jquery': 'lib/jquery',
-        'underscore': 'lib/underscore',
-        'backbone': 'lib/backbone',
-        'router': 'lib/router',
-        'require': 'lib/require'
-    }
-});
 
 require([
     'jquery',
 	'underscore',
+	'handlebars',
 	'backbone',
     'router',
     'require'
-],function($, _, Backbone, router, require){
+],function($, _, Handlebars, Backbone, router, require){
 	
 	//homepage
 	router.on('route:main', function(){
