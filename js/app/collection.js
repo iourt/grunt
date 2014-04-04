@@ -2,42 +2,18 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'js/collection/collection_1'
+	'app/collection/collection_1',
+	'app/collection/collection_2'
 ], function(
 	$,
 	_,
 	Backbone,
-	Collection1
+	Collection1,
+	Collection2
 ){
 	var CollectionShow = function(){
-		// var Book = Backbone.Model.extend({
-		// 	default: {
-		// 		name: ''
-		// 	}
-		// });
-	
-		// var models = [{
-		// 	name: 'one'
-		// },{
-		// 	name: 'two'
-		// },{
-		// 	name: 'three'
-		// }];
-		
-		// // var Booklist = Backbone.Collection.extend({
-		// // 	model: Book
-		// // });
-		// // var books = new Booklist(models);
-		// // 集合也可以这样定义
-		// var books = new Backbone.Collection(models, {
-		// 	model: Book
-		// })
-
-		// console.log(books.models[0].get("name"));
-		// // 等价于
-		// // console.log(books.models[0].attributes.name);
-
-		new Collection1();
+		// new Collection1();
+		new Collection2();
 	};
 	return CollectionShow;
 });

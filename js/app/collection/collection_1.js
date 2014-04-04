@@ -4,6 +4,13 @@ define([
 	'backbone'
 ], function($, _, Backbone){
 	var Collection1 = function(){
+
+		// 集合提供了3个方法允许我们动态地向集合中动态插入模型：
+
+		// add()：向集合中的指定位置插入模型，如果没有指定位置，默认追加到集合尾部
+		// push()：将模型追加到集合尾部（与add方法的实现相同）
+		// unshift()：将模型插入到集合头部
+
 		// 定义模型类  
 		var Book = Backbone.Model.extend({  
 		    defaults : {  
@@ -48,7 +55,9 @@ define([
 		});  
 		  
 		// 在控制台输出集合中的模型列表  
-		console.dir(books.models);
+		console.log(books.models);
+
+		
 	};
 	return Collection1;
 });
