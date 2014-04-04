@@ -10,10 +10,6 @@ define([
 			}
 		});
 	
-		var Booklist = Backbone.Collection.extend({
-			model: Book
-		});
-	
 		var models = [{
 			name: 'one'
 		},{
@@ -22,16 +18,18 @@ define([
 			name: 'three'
 		}];
 		
-		var books = new Booklist(models);
+		// var Booklist = Backbone.Collection.extend({
+		// 	model: Book
+		// });
+		// var books = new Booklist(models);
+		// 集合也可以这样定义
+		var books = new Backbone.Collection(models, {
+			model: Book
+		})
 
-		var a = JSON.stringify(books);
-		var b = JSON.parse(a);
-		
-		//转化为JSON类型字符串
-		console.log(a);
-
-		//将JSON字符串转成JS对象
-		console.log(b[0].name);
+		console.log(books.models[0].get("name"));
+		// 等价于
+		// console.log(books.models[0].attributes.name);
 	};
 	return Todo;
 });

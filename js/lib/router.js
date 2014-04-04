@@ -7,6 +7,7 @@ define([
         routes: {
             '': 'main',
 			'main': 'main',
+            'collection': 'collection',
 			'prompt': 'prompt',
 			'json': 'json',
 			'todo': 'todo'

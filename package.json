@@ -6,7 +6,9 @@
   "dependencies": {
     "grunt": "~0.4.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-contrib-handlebars": "^0.7.0"
+  },
   "scripts": {
     "test": "ok"
   },

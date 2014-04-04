@@ -1,8 +1,12 @@
 //配置URL
 requirejs.config({
-    baseUrl: 'js/lib',
+    baseUrl: '/js/',
     paths: {
-        app: '../app'
+        'jquery': 'lib/jquery',
+        'underscore': 'lib/underscore',
+        'backbone': 'lib/backbone',
+        'router': 'lib/router',
+        'require': 'lib/require'
     }
 });
 
@@ -19,7 +23,13 @@ require([
 		require(['app/main'], function(HomeShow){
 			HomeShow();
 		});
-        console.log('homepage');
+	});
+
+	//collection 集合
+	router.on('route:collection', function(){
+		require(['app/collection'], function(CollectionShow){
+			CollectionShow();
+		});
 	});
 
 	//prompt
@@ -27,7 +37,6 @@ require([
 		require(['app/prompt'], function(PromptView){
 			PromptView();
 		});
-        console.log('prompt');
 	});
 
 	//prompt
@@ -35,7 +44,6 @@ require([
 		require(['app/json'], function(Json){
 			Json();
 		});
-        console.log('json');
 	});
 
 
@@ -44,7 +52,6 @@ require([
 		require(['app/todo'], function(Todo){
 			Todo();
 		});
-        console.log('todo');
 	});
 
     //开启路由监听
