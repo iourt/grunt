@@ -2,3 +2,4 @@
 Thumbs.db
 release
 js/layout/*.hbs.js
+bower_components/

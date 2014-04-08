@@ -2,12 +2,12 @@
 requirejs.config({
     baseUrl: 'js/',
     paths: {
-        'jquery':     'lib/jquery',
-        'underscore': 'lib/underscore',
-        'backbone':   'lib/backbone',
-        'handlebars': 'lib/handlebars-v1.3.0',
+        'jquery':     '../bower_components/lib/jquery',
+        'underscore': '../bower_components/lib/underscore',
+        'backbone':   '../bower_components/lib/backbone',
+        'handlebars': '../bower_components/lib/handlebars',
         'router':     'lib/router',
-        'require':    'lib/require'
+        'require':    '../bower_components/lib/require'
     },
     shim: {
     	backbone: {
