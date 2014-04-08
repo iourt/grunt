@@ -1,0 +1,11 @@
+{
+    "name": "theme",
+    "version": "1.0.0",
+    "main": "",
+    "ignore": [],
+    "dependencies": {
+        "blade": "http://git.dev.sh.ctripcorp.com/gs_h5_dev/gs_h5_blade.git#v0.0.1",
+        "theme": "http://git.dev.sh.ctripcorp.com/gs_h5_dev/gs_h5_theme.git#master"
+    },
+    "private": true 
+}
