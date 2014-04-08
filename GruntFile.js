@@ -1,12 +1,16 @@
+var path = require("path"),
+	fs = require("fs"),
+	crypto = require("crypto");
+
+
 module.exports = function(grunt) {
 
 	// 自定义一些初始配置
-	grunt.appueConfig = {
-		// 多少项目目录
-		projects = ['prj-test'],
-		// 产品目录，执行压缩等等后生成的目录
-		products = "release"
-	};
+	grunt.appueConfig = {};
+	// 多少项目目录
+	grunt.appueConfig.projects = ['prj-test'];
+	// 产品目录，执行压缩等等后生成的目录
+	grunt.appueConfig.products = "release";
 
 	// Project configuration.  
 	grunt.initConfig({  
@@ -33,10 +37,6 @@ module.exports = function(grunt) {
 	    }
 	});  
 
-
-    // bower all project
-    register_one("bower-all", ["bower"]);
-
     // register(a, [b, c]) => a:prj = b:prj + c:prj
     function register(name, tasks) {
         grunt.appueConfig.projects.forEach(function(proj) {
@@ -56,11 +56,51 @@ module.exports = function(grunt) {
             });
         });
 
+        // 打log
+        grunt.log.oklns(name);
+
         grunt.registerTask(name, ts);
     }
 
+    // bower all project
+    register_one("bower-all", ["bower"]);
 
+    grunt.registerTask("run-shell", "run shell scripts", function(cmd, args, cwd){
+    	grunt.log.oklns(cmd);
+    	grunt.log.oklns(args);
+    	grunt.log.oklns(cwd);
+
+        var done = this.async();
+        var param = args ? args.split("+") : [];
+
+        cwd = cwd || ".";
+
+		// process.cwd(); nodejs 的方法，返回当前工作目录
+        if (!grunt.file.isPathAbsolute(cmd)) {
+            cmd = path.join(process.cwd(), cmd);
+        }
+
+        param.unshift(cmd);
+
+        var child = grunt.util.spawn({
+	            cmd: "node",
+	            args: param,
+	            opts: { cwd: cwd }
+	        }, function(error, result, code) {
+	            if (error) {
+	                grunt.fail.fatal("Error occured, try \"" + cmd.concat(param).join(" ") +  "\" again ... ");
+	            } else {
+	                done();
+	            }
+	        });
+
+        child.stdout.pipe(process.stdout);
+        child.stderr.pipe(process.stderr);
+    });
+    
     grunt.registerTask("bower", "run bower install", function(prj) {
+    	grunt.log.oklns(prj);
+
         if (prj && grunt.file.exists(prj)) {
             grunt.task.run("run-shell:node_modules/bower/bin/bower:update+--allow-root:" + prj);
         } else {
