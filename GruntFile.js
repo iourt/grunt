@@ -6,11 +6,12 @@ var path = require("path"),
 module.exports = function(grunt) {
 
 	// 自定义一些初始配置
-	grunt.appueConfig = {};
-	// 多少项目目录
-	grunt.appueConfig.projects = ['prj-test'];
-	// 产品目录，执行压缩等等后生成的目录
-	grunt.appueConfig.products = "release";
+	grunt.appueConfig = {
+		// 项目
+		projects: ['prj-test'], 
+		// 产品目录，执行压缩等等后生成的目录
+		products: "release"
+	};
 
 	// Project configuration.  
 	grunt.initConfig({  
@@ -66,9 +67,10 @@ module.exports = function(grunt) {
     register_one("bower-all", ["bower"]);
 
     grunt.registerTask("run-shell", "run shell scripts", function(cmd, args, cwd){
-    	grunt.log.oklns(cmd);
-    	grunt.log.oklns(args);
-    	grunt.log.oklns(cwd);
+
+    	grunt.log.oklns("cmd: "+cmd);
+    	grunt.log.oklns("args: "+args);
+    	grunt.log.oklns("cwd: "+cwd);
 
         var done = this.async();
         var param = args ? args.split("+") : [];
@@ -81,11 +83,15 @@ module.exports = function(grunt) {
         }
 
         param.unshift(cmd);
+        
+    	// grunt.log.oklns("param: "+param);
 
         var child = grunt.util.spawn({
 	            cmd: "node",
 	            args: param,
-	            opts: { cwd: cwd }
+	            opts: {
+	            	cwd: cwd
+	            }
 	        }, function(error, result, code) {
 	            if (error) {
 	                grunt.fail.fatal("Error occured, try \"" + cmd.concat(param).join(" ") +  "\" again ... ");
@@ -97,7 +103,7 @@ module.exports = function(grunt) {
         child.stdout.pipe(process.stdout);
         child.stderr.pipe(process.stderr);
     });
-    
+
     grunt.registerTask("bower", "run bower install", function(prj) {
     	grunt.log.oklns(prj);
 
